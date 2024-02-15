@@ -1,0 +1,32 @@
+﻿/****** Object:  Table [dbo].[Before4_JobTemplateSteps]    Committed by VersionSQL https://www.versionsql.com ******/
+
+CREATE TABLE dbo.Before4_JobTemplateSteps(
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[TemplateID] [int] NOT NULL,
+	[StepName] [nvarchar](100) NOT NULL,
+	[StepOrder] [int] NULL,
+	[StepTypeID] [int] NOT NULL,
+	[CreatedStamp] [datetime] NULL,
+	[UpdatedStamp] [datetime] NULL,
+	[RunModeID] [int] NULL,
+	[RequiresSetup] [bit] NULL,
+	[QueryTemplateId] [int] NULL,
+	[ReportListId] [int] NULL,
+	[TransformationId] [int] NULL,
+	[FileLayoutId] [int] NULL,
+	[SpecialId] [int] NULL,
+	[QueryCriteriaId] [int] NULL,
+	[DependsOnStep] [int] NULL,
+	[StepFileNameAlgorithm] [varchar](max) NULL,
+	[FileSourcePath] [varchar](500) NULL,
+	[FileSourceExt] [varchar](10) NULL,
+	[AllowMultipleFiles] [bit] NULL,
+	[StepSubProcessID] [int] NULL,
+	[DependsOnStepID] [int] NULL,
+	[VFPIn] [bit] NULL,
+	[VFP_QueryID] [varchar](50) NULL,
+	[VFP_BTCRITID] [varchar](50) NULL,
+	[VFP_LayoutID] [varchar](50) NULL,
+	[VFP_ReportID] [varchar](50) NULL,
+	[DependsOnStepIDs] [varchar](500) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]

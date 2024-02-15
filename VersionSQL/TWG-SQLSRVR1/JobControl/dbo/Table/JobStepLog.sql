@@ -1,0 +1,43 @@
+﻿/****** Object:  Table [dbo].[JobStepLog]    Committed by VersionSQL https://www.versionsql.com ******/
+
+CREATE TABLE dbo.JobStepLog(
+	[LogRecID] [int] IDENTITY(1,1) NOT NULL,
+	[JobID] [int] NULL,
+	[JobStepID] [int] NULL,
+	[LogStamp] [datetime] NULL,
+	[LogInformation] [varchar](max) NULL,
+	[LogInfoType] [int] NULL,
+	[LogInfoSource] [varchar](100) NULL,
+	[JobLogID] [int] NULL,
+	[LoopCount] [int] NULL,
+ CONSTRAINT [PK_JobStepLog] PRIMARY KEY CLUSTERED 
+(
+	[LogRecID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING ON
+
+CREATE NONCLUSTERED INDEX [<JobStepLog_LogInfoType_LogInfoSource_JobStepID_LogStamp_LogInformation] ON dbo.JobStepLog
+(
+	[LogInfoType] ASC,
+	[LogInfoSource] ASC
+)
+INCLUDE([JobStepID],[LogStamp],[LogInformation]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+SET ANSI_PADDING ON
+
+CREATE NONCLUSTERED INDEX [JobStepID_LogInfoType_LogInfoSource] ON dbo.JobStepLog
+(
+	[JobStepID] ASC,
+	[LogInfoType] ASC,
+	[LogInfoSource] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+SET ANSI_PADDING ON
+
+CREATE NONCLUSTERED INDEX [JobStepLog_JobID_LogInfoType_LogInfoSource] ON dbo.JobStepLog
+(
+	[JobID] ASC,
+	[LogInfoType] ASC,
+	[LogInfoSource] ASC
+)
+INCLUDE([JobStepID],[LogStamp],[LogInformation]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]

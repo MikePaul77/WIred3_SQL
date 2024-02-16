@@ -114,7 +114,7 @@ BEGIN
 				                    left outer join Lookups..States s on ltrim(str(s.id)) = jp.ParamValue and jp.ParamName = 'StateID'
 				                    left outer join Lookups..Registries r on ltrim(str(r.id)) = jp.ParamValue and jp.ParamName = 'RegistryID'
 				                    left outer join Lookups..Counties c on ltrim(str(c.id)) = jp.ParamValue and jp.ParamName = 'CountyID'
-				                    left outer join (select js.QueryCriteriaID, j.JobID, convert(date,MinValue) QueryRangeMinDate,convert(date, MaxValue) QueryRangeMaxDate
+				                    left outer join (select js.QueryCriteriaID, j.JobID, try_convert(date,MinValue) QueryRangeMinDate,try_convert(date, MaxValue) QueryRangeMaxDate
 									                    , rowid = ROW_NUMBER() OVER (PARTITION BY j.JobID ORDER BY js.StepOrder, qr.ID)
 								                    from JobCOntrol..JobSteps js
 									                    join JobControl..Jobs j on js.JobID = j.JobID and coalesce(j.disabled,0) = 0
